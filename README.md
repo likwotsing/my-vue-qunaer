@@ -27,3 +27,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### git仓库
+git@github.com:likwotsing/my-vue-qunaer.git
+
