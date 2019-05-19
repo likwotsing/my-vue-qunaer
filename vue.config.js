@@ -9,5 +9,15 @@ module.exports = {
       .set('@', resolve('src'))
       .set('styles', resolve('src/assets/styles'))
       .set('common', resolve('src/common'))
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite: {
+          '^/api': '/mock'
+        }
+      }
+    }
   }
 }
