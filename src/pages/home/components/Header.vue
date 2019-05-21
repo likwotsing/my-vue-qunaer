@@ -9,7 +9,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        {{city}}
+        {{this.$store.state.city}}
         <span class="iconfont icon-jiantou arrow-icon"></span>
       </div>
     </router-link>
@@ -18,10 +18,7 @@
 
 <script>
 export default {
-  name: 'HomeHeader',
-  props: {
-    city: String
-  }
+  name: 'HomeHeader'
 }
 </script>
 
@@ -47,7 +44,8 @@ export default {
       border-radius: .1rem
       color: #ccc
     .header-right
-      width 1.24rem
+      min-width 1.24rem
+      padding: .1rem
       float: right
       text-align: center
       color: #ffffff
