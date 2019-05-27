@@ -1,0 +1,71 @@
+<template>
+  <div class="container" @click="handleGalleryClick">
+    <div class="wrapper">
+      <swiper :options="swiperOption">
+        <swiper-slide
+          v-for="(item, index) of imgs"
+          :key="index"
+        >
+          <div>
+            <img class="gallery-img" :src="item" alt="">
+          </div>
+        </swiper-slide>
+        <div class="swiper-pagination"  slot="pagination"></div>
+      </swiper>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Gallery',
+  props: {
+    imgs: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
+  data () {
+    return {
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        paginationType: 'fraction',
+        observeParents: true,
+        observe: true
+      }
+    }
+  },
+  methods: {
+    handleGalleryClick () {
+      this.$emit('close')
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+  .container >>> .swiper-container
+    overflow: inherit
+  .container
+    z-index: 99
+    display: flex
+    flex-direction: column
+    justify-content: center
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background: #000
+    color: #fff
+    .wrapper
+      width: 100%
+      height: 0
+      padding-bottom: 68.60%
+      .gallery-img
+        width: 100%
+      .swiper-pagination-fraction
+        bottom: -1rem
+</style>
