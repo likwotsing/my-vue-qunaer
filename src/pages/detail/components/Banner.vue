@@ -1,33 +1,41 @@
 <template>
   <div>
     <div class="banner" @click="handleBannerClick">
-      <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1502/15/15ca1d0eab6bf46c.water.jpg_600x330_1108fbd3.jpg" alt="">
+      <img class="banner-img" :src="bannerImg" alt="">
       <div class="banner-info">
         <div class="banner-title">
-          东部华侨城大侠谷
+          {{this.sightName}}
         </div>
         <div class="banner-number">
           <span class="iconfont icon-tupian banner-icon"></span>
-          <span>19</span>
+          <span>{{this.bannerImgs.length}}</span>
         </div>
       </div>
     </div>
-    <common-gallery :imgs="imgs" v-show="showGallary" @close="handleGalleryClose"></common-gallery>
+    <fade-animation>
+      <common-gallery :imgs="bannerImgs" v-show="showGallary" @close="handleGalleryClose"></common-gallery>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallery from 'common/gallery/Gallery'
+import FadeAnimation from 'common/fade/FadeAnimation'
 
 export default {
   name: 'DetailBanner',
+  props: {
+    sightName: String,
+    bannerImg: String,
+    bannerImgs: Array
+  },
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   data () {
     return {
-      showGallary: false,
-      imgs: ['http://img1.qunarzz.com/sight/p0/1502/91/91b45435e2150822.water.jpg_r_800x800_aaa13bbf.jpg', 'http://img1.qunarzz.com/sight/p0/1502/fe/fe19db77df7adf49.water.jpg_r_800x800_57fa6a66.jpg']
+      showGallary: false
     }
   },
   methods: {
